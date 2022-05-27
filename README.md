@@ -1,2 +1,2 @@
-# test_tasks
+# Test tasks
 My solutions to several small tasks.

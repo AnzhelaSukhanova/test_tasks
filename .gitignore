@@ -1,0 +1,7 @@
+# CLion files
+*/.idea/*
+*/CMakeLists.txt
+*/cmake-build-debug/*
+
+# Output files
+SI/logfile.json
