@@ -32,29 +32,26 @@ public:
 		nodeID[node] = curID;
 		idNode[curID] = node;
 		if (head == nullptr)
-		{
 			head = node;
-			count = 1;
-		}
 		else if (tail == nullptr)
 		{
 			head->next = node;
 			node->prev = head;
 			tail = node;
+			last = tail;
 		}
 		else
 		{
-			ListNode *curNode = tail;
-			while (curNode->next != nullptr)
-				curNode = curNode->next;
-			node->prev = curNode;
-			curNode->next = node;
+			last->next = node;
+			node->prev = last;
+			last = node;
 		}
-	};
-	void Free()
+	}
+	void Erase()
 	{
 		head = nullptr;
 		tail = nullptr;
+		last = nullptr;
 		count = 0;
 		nodeID = {{nullptr, 0}};
 		idNode = {{0, nullptr}};
@@ -65,6 +62,7 @@ public:
 private:
 	ListNode *head = nullptr;
 	ListNode *tail = nullptr;
+	ListNode *last = nullptr;
 	int count = 0;
 	std::map<ListNode*, int> nodeID = {{nullptr, 0}};
 	std::map<int, ListNode*> idNode = {{0, nullptr}};

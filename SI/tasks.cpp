@@ -63,7 +63,7 @@ void List::Serialize(FILE *file) {
 
 void List::Deserialize(FILE *file)
 {
-	this->Free();
+	this->Erase();
 	char ch, lastCh;
 	fscanf(file, "%c", &ch);
 	while (ch != '}')
