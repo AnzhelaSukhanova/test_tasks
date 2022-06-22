@@ -1,5 +1,6 @@
 #include <cstddef>
 #include <cstring>
+#include <algorithm>
 
 struct String {
 	size_t size;
@@ -34,5 +35,27 @@ struct String {
 		size += other.size;
 		delete[] str;
 		str = result;
+	}
+
+	void swap(String& s)
+	{
+		std::swap(size, s.size);
+		std::swap(str, s.str);
+	}
+
+	String(const String &other)
+	{
+		size = other.size;
+		str = new char[size + 1];
+		for (int i = 0; i < size; ++i)
+			str[i] = other.str[i];
+		str[size] = '\0';
+	}
+
+	String &operator=(const String &other)
+	{
+		if (this != &other)
+			String(other).swap(*this);
+		return *this;
 	}
 };
